@@ -1,0 +1,19 @@
+/* React Spring requires the use of css documents to animate, 
+which is why we can't use any fancy inline styles or styled jsx. */
+.card {
+    width: 190px;
+    height: 290px;
+    margin: 10px;
+    border: "solid 1px";
+    background: white;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s;
+    will-change: transform;
+  }
+  
+  .card:hover {
+    box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+  }
