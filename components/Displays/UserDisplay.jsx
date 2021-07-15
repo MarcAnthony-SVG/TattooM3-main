@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Cards from '../Cards';
+import ImageContext from '../Context/ImageContext.jsx';
 
 const USER_CARD_SEARCH = gql`
   query SearchByUserInput($search: String) {
@@ -15,28 +16,19 @@ const USER_CARD_SEARCH = gql`
 `;
 
 const UserDisplay = ({ searchPhrase }) => {
-  // const { loading, error, data } = useQuery(USER_CARD_SEARCH, {
-  //   variables: { search: `${searchPhrase}` },
-  // });
-  // if (error) return `Error! ${error.message}`;
-  // if (loading) return 'Loading...';
-  // console.log('Testing Tattoo Style', `${searchPhrase}`);
-  // let userData = data.searched_PB_By_Style;
-  // console.log(userData);
-  // const deleteCard = (id) => {
-  //   console.log('UserDisplay clicked', id);
-  //   const newResults = [...userData];
-  //   let filtedResults = newResults.filter((card) => {
-  //     return card.id !== id;
-  //   });
-  //   userData = filtedResults;
-
-  //   return userData;
-  // };
   const { loading, data, error } = useQuery(USER_CARD_SEARCH, {
     variables: { search: `${searchPhrase}` },
   });
-  const [searchResults, setSearchResults] = useState([]);
+  const {
+    likedImages,
+    setLikedImages,
+    userSearchResults,
+    setUserSearchResults,
+    searchResults,
+    setSearchResults,
+    profile,
+    setProfile,
+  } = useContext(ImageContext);
 
   useEffect(() => {
     // do some checking here to ensure data exist
@@ -47,10 +39,11 @@ const UserDisplay = ({ searchPhrase }) => {
     }
   }, [data]);
   const deleteCard = (id) => {
-    const newResults = [...searchResults];
+    let newResults = [...searchResults];
     newResults = newResults.filter((card) => {
       return card.id !== id;
     });
+    console.log('USER - Clicked Delete');
     setSearchResults(newResults);
   };
   const likePhoto = (id) => {
@@ -62,23 +55,32 @@ const UserDisplay = ({ searchPhrase }) => {
       return card;
     });
     setSearchResults(newResults);
+    addToProfile(id);
+  };
+  const addToProfile = (id) => {
+    let newResults = [...searchResults];
+    newResults = newResults.map((card) => {
+      if (card.id === id) {
+        setLikedImages((prevValues) => [...prevValues, card]);
+      }
+    });
   };
   return (
     <>
-      {/* <div className="Image-Gallery-Container"> */}
       <div className="card">
         {searchResults.map(({ user, likes, largeImageURL, id }) => (
           <Cards
-            deleteCard={deleteCard}
             userName={user}
             likes={likes}
-            likePhoto={likePhoto}
             id={id}
             pic={largeImageURL}
+            likePhoto={likePhoto}
+            deleteCard={deleteCard}
+            profile={profile}
+            addToProfile={addToProfile}
           ></Cards>
         ))}
       </div>
-      {/* </div> */}
       <style jsx>{`
         .card {
           display: contents;

@@ -10,7 +10,15 @@ const calc = (x, y) => [
 const trans = (x, y, s) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-const Cards = ({ userName, id, pic, likes, deleteCard, likePhoto }) => {
+const Cards = ({
+  userName,
+  id,
+  pic,
+  likes,
+  deleteCard,
+  likePhoto,
+  addToProfile,
+}) => {
   const [dprops, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
@@ -19,6 +27,7 @@ const Cards = ({ userName, id, pic, likes, deleteCard, likePhoto }) => {
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
+
   return (
     <animated.div
       className="card"
@@ -26,7 +35,7 @@ const Cards = ({ userName, id, pic, likes, deleteCard, likePhoto }) => {
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: dprops.xys.interpolate(trans),
-        height: 'auto',
+        height: '34vh',
         margin: '10px',
       }}
     >
@@ -40,15 +49,22 @@ const Cards = ({ userName, id, pic, likes, deleteCard, likePhoto }) => {
           width={500}
           height={500}
         ></Image>
-        <div style={{ borderTop: '1px solid black', width: 'auto' }}>
-          <p>
-            Likes<span>#{likes}</span>
-          </p>
+        <p style={{ borderTop: '1px solid black' }}>
+          Likes<span>#{likes}</span>
+        </p>
+        <div className="text-container">
           <button onClick={() => deleteCard(id)}>Delete</button>
           <button onClick={() => likePhoto(id)}>Like</button>
+          <button onClick={() => addToProfile(id)}>Add To Profile</button>
         </div>
       </div>
       <style jsx>{`
+        .card-container {
+          width: 100%;
+        }
+        .text-container {
+          display: flex;
+        }
         h3 {
           overflow: hidden;
           text-overflow: ellipsis;

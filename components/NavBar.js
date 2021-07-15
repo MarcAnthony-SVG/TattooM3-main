@@ -18,6 +18,11 @@ const Nav = () => (
           <a className="navBar-button">Image Gallery</a>
         </Link>
       </li>
+      <li>
+        <Link href="/profile">
+          <a className="navBar-button">Profile</a>
+        </Link>
+      </li>
     </ul>
 
     <style jsx>{`

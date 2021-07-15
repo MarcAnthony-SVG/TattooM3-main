@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { gql, useQuery } from '@apollo/client';
+import ImageContext from '../Context/ImageContext.jsx';
+
 import Cards from '../Cards';
 
 const STYLES_CARD_SEARCH = gql`
@@ -18,21 +20,30 @@ const StyleDisplay = ({ searchPhrase }) => {
   const { loading, data, error } = useQuery(STYLES_CARD_SEARCH, {
     variables: { search: `${searchPhrase} tattoos` },
   });
-  const [searchResults, setSearchResults] = useState([]);
+  const {
+    likedImages,
+    setLikedImages,
+    searchResults,
+    setSearchResults,
+    profile,
+    setProfile,
+  } = useContext(ImageContext);
 
   useEffect(() => {
     // do some checking here to ensure data exist
     if (data) {
       let results = data.searched_PB_By_Style;
       // mutate data if you need to
+      console.log('data style', data);
       setSearchResults(results);
     }
   }, [data]);
   const deleteCard = (id) => {
-    const newResults = [...searchResults];
+    let newResults = [...searchResults];
     newResults = newResults.filter((card) => {
       return card.id !== id;
     });
+    console.log('STYLE - Clicked Delete');
     setSearchResults(newResults);
   };
   const likePhoto = (id) => {
@@ -44,7 +55,20 @@ const StyleDisplay = ({ searchPhrase }) => {
       return card;
     });
     setSearchResults(newResults);
+    addToProfile(id);
   };
+  const addToProfile = (id) => {
+    let newResults = [...searchResults];
+    const likedPhotos = [];
+    newResults = newResults.map((card) => {
+      if (card.id === id) {
+        likedPhotos.push(card);
+        // setProfile(!profile);
+      }
+    });
+    setLikedImages(likedPhotos);
+  };
+
   return (
     <div className="card">
       {searchResults.map(({ user, likes, largeImageURL, id }) => (
@@ -55,6 +79,8 @@ const StyleDisplay = ({ searchPhrase }) => {
           pic={largeImageURL}
           likePhoto={likePhoto}
           deleteCard={deleteCard}
+          // profile={profile}
+          addToProfile={addToProfile}
         ></Cards>
       ))}
       <style jsx>{`
