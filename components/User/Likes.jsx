@@ -5,6 +5,7 @@ import Cards from '../Cards';
 const Likes = () => {
   const { likedImages } = useContext(ImageContext);
   // const [likes, setLikes] = useState(0);
+  
   return (
     <div className="likes-container" >
       Likes {likedImages.length}
