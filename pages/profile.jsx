@@ -1,30 +1,55 @@
 import Layout from '../components/Layout';
 import Profile from '../components/User/Profile';
 import Likes from '../components/User/Likes';
-import Dislikes from '../components/User/Dislikes';
+// import Dislikes from '../components/User/Dislikes';
 
-function Liked() {
+function ProfilePage() {
   return (
     <Layout>
-      <section className="liked-modal">
-        <Profile></Profile>
-        <div className="container">
+      <main>
+        <section className="upperSection">
+          <Profile></Profile>
+        </section>
+        <section className="lowerSection">
           <Likes></Likes>
-          <Dislikes></Dislikes>
-        </div>
-      </section>
+          {/* <Dislikes></Dislikes> */}
+        </section>
+      </main>
       <style jsx>{`
-        .liked-modal {
-          background-color: red;
-          height: 93.5vh;
-          color: black;
+        main {
+          background-color: silver;
+          border: 1px solid black;
         }
-        .container {
+        .upperSection {
+          background-color: red;
+          color: black;
+          position: relative;
+          left: 25%;
+          width: 50%;
+        }
+        .lowerSection {
           display: flex;
+          position: relative;
+          left: 25%;
+          width: 50%;
+        }
+        @media (max-width: 730px) {
+          .upperSection {
+            background-color: red;
+            color: black;
+            left:0;
+            width: 100%;
+          }
+          .lowerSection {
+            display: flex;
+            position: relative;
+            left: 0%;
+            width: 100%;
+          }
         }
       `}</style>
     </Layout>
   );
 }
 
-export default Liked;
+export default ProfilePage;

@@ -67,6 +67,7 @@ const UserDisplay = ({ searchPhrase }) => {
   };
   return (
     <>
+      <p>Results:{searchResults ? <span>{searchResults.length}</span>: <span>0</span>}</p>
       <div className="card">
         {searchResults.map(({ user, likes, largeImageURL, id }) => (
           <Cards
@@ -83,7 +84,11 @@ const UserDisplay = ({ searchPhrase }) => {
       </div>
       <style jsx>{`
         .card {
-          display: contents;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
         }
       `}</style>
     </>

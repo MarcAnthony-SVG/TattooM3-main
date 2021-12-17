@@ -11,39 +11,36 @@ const ImageGallery = () => {
   const [page, setPage] = useState();
   return (
     <Layout>
-      <div className="Image-Gallery-Container">
-        <h1 id="image-gallery">Image Gallery</h1>
+      <main className="imageGalleryContainer">
+        <h1>Image Gallery</h1>
         <SearchBar
           setUserSearch={setUserSearch}
           userSearch={userSearch}
           setPage={setPage}
           setTattooSearch={setTattooSearch}
-          className="SearchBar-Container"
         ></SearchBar>
-        <div className="Card-Container">
+        <section>
           {page === 'StyleDisplay' ? (
             <StyleDisplay searchPhrase={tattooSearch}></StyleDisplay>
           ) : (
             <UserDisplay searchPhrase={userSearch}></UserDisplay>
           )}
-        </div>
-      </div>
+        </section>
+      </main>
       <style jsx>{`
-        .Image-Gallery-Container {
+        .imageGalleryContainer {
           background-color: white;
           color: black;
-        }
-        #image-gallery {
-          font-size: 350%;
           display: flex;
-          flex-direction: column;
+          flex-direction:column;
+          align-items: center;
           justify-content: center;
-          text-align: center;
         }
-        .SearchBar-Container {
-          background-color: white;
+        h1 {
+          font-size: 350%;
         }
-        .Card-Container {
+       
+        section {
           display: flex;
           flex-wrap: wrap;
           margin: 43px;

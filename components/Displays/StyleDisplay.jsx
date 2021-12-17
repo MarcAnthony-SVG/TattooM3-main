@@ -70,24 +70,31 @@ const StyleDisplay = ({ searchPhrase }) => {
   };
 
   return (
-    <div className="card">
-      {searchResults.map(({ user, likes, largeImageURL, id }) => (
-        <Cards
-          userName={user}
-          likes={likes}
-          id={id}
-          pic={largeImageURL}
-          likePhoto={likePhoto}
-          deleteCard={deleteCard}
-          // profile={profile}
-          addToProfile={addToProfile}
-        ></Cards>
-      ))}
-      <style jsx>{`
-        .card {
-          display: contents;
-        }
-      `}</style>
+    <div>
+      <p>Results:{searchResults ? <span>{searchResults.length}</span>: <span>0</span>}</p>
+      <div className="card">
+        {searchResults.map(({ user, likes, largeImageURL, id }) => (
+          <Cards
+            userName={user}
+            likes={likes}
+            id={id}
+            pic={largeImageURL}
+            likePhoto={likePhoto}
+            deleteCard={deleteCard}
+            // profile={profile}
+            addToProfile={addToProfile}
+          ></Cards>
+        ))}
+        <style jsx>{`
+          .card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+          }
+        `}</style>
+      </div>
     </div>
   );
 };

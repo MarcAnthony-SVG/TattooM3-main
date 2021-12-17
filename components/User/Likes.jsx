@@ -7,8 +7,10 @@ const Likes = () => {
   // const [likes, setLikes] = useState(0);
   
   return (
-    <div className="likes-container" >
-      Likes {likedImages.length}
+    <div>
+      <h3>Likes {likedImages.length}</h3>
+      <section  className="likes-container"> 
+    
       {likedImages.map(({ user, likes, largeImageURL, id }) => (
         <Cards
           userName={user}
@@ -19,18 +21,25 @@ const Likes = () => {
           //   deleteCard={deleteCard}
           //   heartPhoto={heartPhoto}
         ></Cards>
-      ))}
+      ))}</section>
       <style jsx>{`
         .likes-container {
           background-color: white;
           color: black;
           border: 3px solid black;
-          height: 57vh;
-          width: 50%;
+          height: 29em;
+          // width: 39em;
           border-radius: 10px;
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           overflow: auto;
+        }
+        div {
+          flex: 1 1 100px;
+          background-color: white;
+          color: black;
+          border: 3px solid black;
         }
       `}</style>
     </div>

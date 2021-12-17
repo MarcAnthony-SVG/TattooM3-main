@@ -34,9 +34,9 @@ const StyleSearch = ({ setTattooSearch, setPage }) => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Choose a style: </label>
+        <label>Choose a style: 
         <select ref={register} name="style">
           {tattooStyles.map(({ label, value }) => (
             <option key={value} value={value}>
@@ -44,10 +44,21 @@ const StyleSearch = ({ setTattooSearch, setPage }) => {
             </option>
           ))}
         </select>
+        </label>
         <input value="Search" type="submit" tattoostyle="Submit" />
       </form>
-      <style jsx>{``}</style>
-    </div>
+      <style jsx>{`
+        @media (max-width: 730px) {
+          form {
+            display: flex;
+            flex-direction: column;
+          }
+          select {
+            width:100%;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 export default StyleSearch;

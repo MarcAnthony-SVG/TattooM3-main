@@ -2,12 +2,14 @@ import { withApollo } from '../libs/Apollo';
 import Layout from '../components/Layout';
 
 const Home = () => {
+
+
   return (
     <Layout>
       <div className="home">
-          <h1 className="main-title">Tattoo M3</h1>
-          <div className="video-container">
-            <video loop autoPlay src={require('../public/Pexels.mp4')} />
+        <h1 className="main-title">Tattoo M3</h1>
+        <div className="video-container">
+          <video loop autoPlay src={require('../public/Pexels.mp4')} />
         </div>
       </div>
       <style jsx>{`

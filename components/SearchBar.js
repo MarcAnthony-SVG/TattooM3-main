@@ -4,34 +4,33 @@ import StyleSearch from './NavBar/StyleSearch';
 
 const SearchBar = ({ setUserSearch, userSearch, setTattooSearch, setPage }) => {
   return (
-    <div className="search-container">
-      <div className="form-style">
+    <section>
+      <article>
         <UserSearch
           userSearch={userSearch}
           setPage={setPage}
           setUserSearch={setUserSearch}
         ></UserSearch>
-      </div>
-      <div className="form-style">
+      </article>
+      <article className="form-style">
         <StyleSearch
           setTattooSearch={setTattooSearch}
           setPage={setPage}
         ></StyleSearch>
-      </div>
+      </article>
       <style jsx>{`
-        .search-container {
+        section {
           display: flex;
           border: solid 1px black;
-          position: relative;
-          left: 2%;
           width: 90%;
-          height: 40px;
+          height: 10vh;
         }
-        .form-style {
+        article {
           margin: auto;
         }
+        
       `}</style>
-    </div>
+    </section>
   );
 };
 

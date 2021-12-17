@@ -7,9 +7,10 @@ const Dislikes = ({ dislikedImages }) => {
           background-color: white;
           color: black;
           border: 3px solid black;
-          height: 57vh;
-          width: 50%;
+          // height: 100;
+          // width: 50%;
           border-radius: 10px;
+          flex: 1 1 100px;
         }
       `}</style>
     </div>

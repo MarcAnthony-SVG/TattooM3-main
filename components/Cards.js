@@ -35,20 +35,24 @@ const Cards = ({
       onMouseLeave={() => set({ xys: [0, 0, 1] })}
       style={{
         transform: dprops.xys.interpolate(trans),
-        height: '34vh',
-        margin: '10px',
+        height: '18em',
+        width: '13em',
+        margin: '13px',
+        border:"1px solid silver"
+
       }}
     >
       <div className="card-container">
         <h3>{userName}</h3>
-        <div className="photo" key={id}></div>
-        <Image
+        {/* <div className="photo" key={id}></div> */}
+        {/* <Image
           loader={imageLoader}
           alt="Mountains"
           src={pic}
           width={500}
           height={500}
-        ></Image>
+        ></Image> */}
+        <img src={pic} width="206vw" height="140vh" margin="13px"></img>
         <p style={{ borderTop: '1px solid black' }}>
           Likes<span>#{likes}</span>
         </p>
@@ -68,10 +72,13 @@ const Cards = ({
         h3 {
           overflow: hidden;
           text-overflow: ellipsis;
-          // word-wrap: break-word;
+          height:3vh;
+          border-bottom: 1px solid black;
+        }
+        p{
+          borderTop: '1px solid black'
         }
         .photo {
-          border-bottom: 1px solid black;
           width: auto;
         }
       `}</style>

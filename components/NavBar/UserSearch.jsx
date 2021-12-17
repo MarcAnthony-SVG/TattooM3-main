@@ -31,7 +31,7 @@ const UserSearch = ({ setUserSearch, userSearch, setPage }) => {
     setPhrase(e.target.value);
   };
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <label>
           Search:
@@ -44,7 +44,22 @@ const UserSearch = ({ setUserSearch, userSearch, setPage }) => {
         </label>
         <input type="submit" value="Search" />
       </form>
-    </div>
+      <style jsx>{`
+        form {
+          // background-color: red;
+        }
+        @media (max-width: 730px) {
+          form {
+            // background-color: blue;
+            display: flex;
+            flex-direction: column;
+          }
+          input {
+            width:100%;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 export default UserSearch;
