@@ -8,8 +8,8 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
+          <title>Tattoo M3</title>
         <Head>
-          <title>Home</title>
           <link
             href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
             rel="stylesheet"
