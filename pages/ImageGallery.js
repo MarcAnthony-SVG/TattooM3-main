@@ -32,14 +32,14 @@ const ImageGallery = () => {
           background-color: white;
           color: black;
           display: flex;
-          flex-direction:column;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
         }
         h1 {
           font-size: 350%;
         }
-       
+
         section {
           display: flex;
           flex-wrap: wrap;

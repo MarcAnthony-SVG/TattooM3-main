@@ -66,8 +66,11 @@ const UserDisplay = ({ searchPhrase }) => {
     });
   };
   return (
-    <>
-      <p>Results:{searchResults ? <span>{searchResults.length}</span>: <span>0</span>}</p>
+    <main>
+      <p>
+        Results:
+        {searchResults ? <span>{searchResults.length}</span> : <span>0</span>}
+      </p>
       <div className="card">
         {searchResults.map(({ user, likes, largeImageURL, id }) => (
           <Cards
@@ -83,6 +86,9 @@ const UserDisplay = ({ searchPhrase }) => {
         ))}
       </div>
       <style jsx>{`
+        main {
+          width: 97vw;
+        }
         .card {
           display: flex;
           flex-wrap: wrap;
@@ -91,7 +97,7 @@ const UserDisplay = ({ searchPhrase }) => {
           height: 100%;
         }
       `}</style>
-    </>
+    </main>
   );
 };
 export default UserDisplay;

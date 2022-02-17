@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import Profile from '../components/User/Profile';
+import Profile from '../components/User/ProfileInfo';
 import Likes from '../components/User/Likes';
 // import Dislikes from '../components/User/Dislikes';
 
@@ -19,15 +19,17 @@ function ProfilePage() {
         main {
           background-color: silver;
           border: 1px solid black;
+          
         }
         .upperSection {
-          background-color: red;
+          background-color: grey;
           color: black;
           position: relative;
           left: 25%;
           width: 50%;
         }
         .lowerSection {
+          background-color: rgb(220, 220, 220);
           display: flex;
           position: relative;
           left: 25%;
@@ -37,7 +39,7 @@ function ProfilePage() {
           .upperSection {
             background-color: red;
             color: black;
-            left:0;
+            left: 0;
             width: 100%;
           }
           .lowerSection {

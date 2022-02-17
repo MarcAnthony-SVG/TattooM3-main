@@ -11,7 +11,7 @@ const About = () => {
       >
         About
       </h1>
-      <img
+      <img alt="About Page Background"
         style={{
           zIndex: -1,
           position: 'absolute',

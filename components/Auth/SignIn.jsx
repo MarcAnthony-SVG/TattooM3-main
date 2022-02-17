@@ -3,7 +3,6 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 const SignIn = () => {
   const { data: session, status } = useSession();
-
   return (
     <nav>
       <ul className="rightNavSection">
@@ -27,6 +26,14 @@ const SignIn = () => {
         <p>Signed in as {session.user.email}</p>
       )}
       <style jsx>{`
+        nav {
+         position:relative;
+         top:-10px;
+         display:inline-flex;
+         width:31em;
+         align-items:center;
+         gap:4%;
+          }
       .auth-button {
         transition-duration: 0.4s;
         border: 1px solid black;
@@ -43,21 +50,13 @@ const SignIn = () => {
         color: black;
         font-size: 13px;
         }
-      nav {
-       position:relative;
-       top:-10px;
-       display:inline-flex;
-       width:31em;
-       align-items:center;
-       gap:4%;
-        }
-        .rightNavSection > li{
+      .rightNavSection > li{
           display: flex;
         }  
-        nav > ul {
+      nav > ul {
           padding 3px;
         }  
-        a{
+      a{
           width:70px
         }
         }

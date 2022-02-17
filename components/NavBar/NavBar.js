@@ -9,22 +9,30 @@ const Nav = () => {
       <ul className="navigationBar">
         <li>
           <Link href="/">
-            <a className="navBar-button">Home</a>
+            <a href="/" className="navBar-button">
+              Home
+            </a>
           </Link>
         </li>
         <li>
           <Link href="/about">
-            <a className="navBar-button">About</a>
+            <a href="/about" className="navBar-button">
+              About
+            </a>
           </Link>
         </li>
         <li>
           <Link href="/ImageGallery">
-            <a className="navBar-button">Image Gallery</a>
+            <a href="/ImageGallery" className="navBar-button">
+              Image Gallery
+            </a>
           </Link>
         </li>
         <li>
           <Link href="/profile">
-            <a className="navBar-button">Profile</a>
+            <a href="/profile" className="navBar-button">
+              Profile
+            </a>
           </Link>
         </li>
       </ul>

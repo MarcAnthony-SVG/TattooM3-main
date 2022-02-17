@@ -1,3 +1,4 @@
+// eslint-disable-next-line jsx-a11y/rule-name
 import Nav from './NavBar/NavBar';
 import SignIn from './Auth/SignIn';
 const Layout = ({ children }) => {

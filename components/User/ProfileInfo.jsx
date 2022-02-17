@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
-const Profile = () => {
+const ProfileInfo = () => {
   const { data: session, status } = useSession();
   const profilePic = !session
     ? 'https://www.kindpng.com/picc/m/78-785827_user-profile-avatar-login-account-male-user-icon.png'
@@ -9,7 +9,13 @@ const Profile = () => {
   const imageLoader = ({ src, width, quality }) => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
+  const date = () => {
+    const today = new Date();
+    let todayString = today.toUTCString().split(' ');
 
+    const [Dayofweek, Num, Month] = todayString;
+    console.log(`${Month}` + `${Num}`);
+  };
   return (
     <div>
       <header>
@@ -30,11 +36,11 @@ const Profile = () => {
             <img src={profilePic} alt="Background-Image" />
           )}
         </figure>
-        <section className="bottomSection">
+        <section className="header-bottom">
           {!session ? <h1>User Name</h1> : <h1>{session.user.name}</h1>}
           <section>
             <h4>
-              Last Visted:<span> Oct 2021</span>
+              Last Visted:<span>{date()}</span>
             </h4>
             <h4>
               location:<span> San Antonio</span>
@@ -55,17 +61,11 @@ const Profile = () => {
           display: flex;
         }
         h1 {
-          color: black;
+          color: white;
         }
         .image-section {
           border: 4px solid blue;
           margin-right: 10%;
-        }
-        .user-info-section {
-          flex: 50%;
-          border: 4px solid black;
-          background: linear-gradient(to top, #808080 2%, #c0c0c0 94%);
-          border-radius: 10px;
         }
         .inline-container {
           display: flex;
@@ -75,7 +75,7 @@ const Profile = () => {
         }
         article {
           display: flex;
-          background-color: white;
+          background-color: rgb(220, 220, 220);
           flex-direction: column;
         }
         figure > img {
@@ -85,4 +85,4 @@ const Profile = () => {
     </div>
   );
 };
-export default Profile;
+export default ProfileInfo;

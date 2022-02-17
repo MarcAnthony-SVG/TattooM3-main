@@ -2,31 +2,34 @@ import { withApollo } from '../libs/Apollo';
 import Layout from '../components/Layout';
 
 const Home = () => {
-
-
   return (
     <Layout>
-      <div className="home">
+      <main className="home">
         <h1 className="main-title">Tattoo M3</h1>
-        <div className="video-container">
-          <video loop autoPlay src={require('../public/Pexels.mp4')} />
-        </div>
-      </div>
+        <video
+          className="video-container"
+          controls
+          loop
+          autoPlay
+          src={require('../public/Pexels.mp4')}
+        >
+          <track default></track>
+        </video>
+      </main>
       <style jsx>{`
         .home {
           width: 100%;
-          color: #333;
+          display: flex;
+          justify-content: center;
         }
         .main-title {
-          position: absolute;
-          left: 37vw;
           z-index: 1;
-          font-size: 10vh;
+          font-size: 4rem;
           font-family: Permanent Marker;
           color: aliceblue;
         }
         .video-container {
-          width: auto;
+          width: 100%;
         }
         video {
           width: 100%;

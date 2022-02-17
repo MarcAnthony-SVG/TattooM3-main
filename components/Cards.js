@@ -1,6 +1,6 @@
-import Image from 'next/image';
+import { Card } from 'react-bootstrap';
 import { useSpring, animated } from 'react-spring';
-
+import Button from './Button';
 //React Spring______________________________________________________________________________________________________________________________________________
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
@@ -16,6 +16,7 @@ const Cards = ({
   pic,
   likes,
   deleteCard,
+  remove,
   likePhoto,
   addToProfile,
 }) => {
@@ -38,8 +39,7 @@ const Cards = ({
         height: '18em',
         width: '13em',
         margin: '13px',
-        border:"1px solid silver"
-
+        border: '1px solid silver',
       }}
     >
       <div className="card-container">
@@ -52,14 +52,44 @@ const Cards = ({
           width={500}
           height={500}
         ></Image> */}
-        <img src={pic} width="206vw" height="140vh" margin="13px"></img>
+        <img
+          alt="tattoo"
+          src={pic}
+          width="206vw"
+          height="140vh"
+          margin="13px"
+        ></img>
         <p style={{ borderTop: '1px solid black' }}>
           Likes<span>#{likes}</span>
         </p>
         <div className="text-container">
-          <button onClick={() => deleteCard(id)}>Delete</button>
-          <button onClick={() => likePhoto(id)}>Like</button>
-          <button onClick={() => addToProfile(id)}>Add To Profile</button>
+          {deleteCard ? (
+            <Button clickEvent={deleteCard} id={id}></Button>
+          ) : (
+            <Button clickEvent={remove} id={id}></Button>
+          )}
+          {likePhoto ? <Button clickEvent={likePhoto} id={id}></Button> : <></>}
+          {addToProfile ? (
+            <Button clickEvent={addToProfile} id={id}></Button>
+          ) : (
+            <></>
+          )}
+          {/* {deleteCard ? (
+            <button onClick={() => deleteCard(id)}>Delete</button>
+          ) : (
+            <button onClick={() => remove(id)}>Remove</button>
+          )}
+
+          {likePhoto ? (
+            <button onClick={() => likePhoto(id)}>Like</button>
+          ) : (
+            <button onClick={() => likePhoto(id)}>Share</button>
+          )}
+          {addToProfile ? (
+            <button onClick={() => addToProfile(id)}>Add To Profile</button>
+          ) : (
+            <></>
+          )} */}
         </div>
       </div>
       <style jsx>{`
@@ -72,11 +102,11 @@ const Cards = ({
         h3 {
           overflow: hidden;
           text-overflow: ellipsis;
-          height:3vh;
+          height: 3vh;
           border-bottom: 1px solid black;
         }
-        p{
-          borderTop: '1px solid black'
+        p {
+          bordertop: '1px solid black';
         }
         .photo {
           width: auto;

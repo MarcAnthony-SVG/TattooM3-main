@@ -8,7 +8,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-          <title>Tattoo M3</title>
+        <title>Tattoo M3</title>
         <Head>
           <link
             href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
@@ -22,9 +22,8 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
-          <Main/>
+          <Main />
           <NextScript />
-         
         </body>
       </Html>
     );
