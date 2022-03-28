@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/react';
-
+import { useState } from 'react';
 const ProfileInfo = () => {
   const { data: session, status } = useSession();
   const profilePic = !session
@@ -10,41 +10,53 @@ const ProfileInfo = () => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
   const date = () => {
-    const today = new Date();
-    let todayString = today.toUTCString().split(' ');
-
+    const todaysDate = new Date();
+    let todayString = todaysDate.toUTCString().split(' ');
+    console.log(todayString);
     const [Dayofweek, Num, Month] = todayString;
+    return `${Dayofweek} ${Month} ${Num} `;
     console.log(`${Month}` + `${Num}`);
   };
+
   return (
     <div>
       <header>
         <img
           src="https://mcdn.wallpapersafari.com/medium/32/3/S1jatp.jpg"
-          alt="Background-Image"
+          alt="User-Profile-Background"
         />
         <figure>
           {!session ? (
             <Image
               loader={imageLoader}
-              alt="UserImage"
+              alt="User-Profile-Picture"
               src={profilePic}
               width={200}
               height={200}
             ></Image>
           ) : (
-            <img src={profilePic} alt="Background-Image" />
+            // eslint-disable-next-line jsx-a11y/img-redundant-alt
+            <img src={profilePic} alt="User-Profile-Picture" />
           )}
         </figure>
         <section className="header-bottom">
           {!session ? <h1>User Name</h1> : <h1>{session.user.name}</h1>}
           <section>
-            <h4>
-              Last Visted:<span>{date()}</span>
-            </h4>
-            <h4>
-              location:<span> San Antonio</span>
-            </h4>
+            {!session ? (
+              <>
+                <h4>Last Visited:</h4>
+                <h4>
+                  Location:<span></span>
+                </h4>
+              </>
+            ) : (
+              <>
+                <h4>Last Visited: {date()}</h4>
+                <h4>
+                  Location:<span> San Antonio</span>
+                </h4>
+              </>
+            )}
           </section>
         </section>
       </header>
@@ -59,6 +71,14 @@ const ProfileInfo = () => {
         .profile-container {
           color: black;
           display: flex;
+        }
+        .dontMoveImage {
+          transform: rotate(0 deg);
+          transform-origin: 0% 0%;
+        }
+        .moveImage {
+          transform: rotate(45deg);
+          transform-origin: 20% 40%;
         }
         h1 {
           color: white;

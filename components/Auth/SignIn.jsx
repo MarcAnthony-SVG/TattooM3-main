@@ -5,11 +5,12 @@ const SignIn = () => {
   const { data: session, status } = useSession();
   return (
     <nav>
+      {console.log(status)}
       <ul className="rightNavSection">
         {!session ? (
           <li>
             <button className="auth-button" onClick={() => signIn()}>
-              <a>Sign in</a>
+              <a>Sign in{console.log(status)}</a>
             </button>
           </li>
         ) : (
